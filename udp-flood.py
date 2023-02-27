@@ -7,10 +7,9 @@ import threading
 
 host = str(sys.argv[1])
 port = int(sys.argv[2])
-#time = int(sys.argv[4])
 method = str(sys.argv[3])
-
-loops = 10000
+time = int(sys.argv[4])
+loops = time * 10
 
 def send_packet(amplifier):
     try:
