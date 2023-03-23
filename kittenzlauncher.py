@@ -69,10 +69,7 @@ except:
     sys.exit()
 
 
-# Check if script is running as root
-if geteuid() != 0:
-    print("Run %s as root." % sys.argv[0])
-    sys.exit()
+
 
 
 # Catch CTRL+C to abort
