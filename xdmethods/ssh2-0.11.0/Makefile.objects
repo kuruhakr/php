@@ -1,0 +1,12 @@
+ssh2.lo: /Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0/ssh2.c
+	$(LIBTOOL) --mode=compile $(CC) -I. -I/Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0 $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -c /Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0/ssh2.c -o ssh2.lo 
+ssh2_fopen_wrappers.lo: /Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0/ssh2_fopen_wrappers.c
+	$(LIBTOOL) --mode=compile $(CC) -I. -I/Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0 $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -c /Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0/ssh2_fopen_wrappers.c -o ssh2_fopen_wrappers.lo 
+ssh2_sftp.lo: /Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0/ssh2_sftp.c
+	$(LIBTOOL) --mode=compile $(CC) -I. -I/Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0 $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)   -c /Users/hayun/Downloads/botnet_project/airtime_botnet/AIRTIME-BOTNET/DDOS-RootSec-master/DDOSScripts/L4/Compiled/methods/ssh2-0.11.0/ssh2_sftp.c -o ssh2_sftp.lo 
+$(phplibdir)/ssh2.la: ./ssh2.la
+	$(LIBTOOL) --mode=install cp ./ssh2.la $(phplibdir)
+
+./ssh2.la: $(shared_objects_ssh2) $(SSH2_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) -shared $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS)  -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_ssh2) $(SSH2_SHARED_LIBADD)
+
